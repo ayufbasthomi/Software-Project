@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,14 +41,38 @@ public class MainActivity extends AppCompatActivity {
 
             private void rollDice() {
                 // Find the TextView by its ID
-                TextView resultText = findViewById(R.id.result_text);
+//                TextView resultText = findViewById(R.id.result_text);
 
                 // Create an instance of Random and generate a random number
                 Random random = new Random();
                 int randomInt = random.nextInt(6) + 1; // Random number between 1 and 6
 
+                int drawableResource;
+                switch (randomInt) {
+                    case 1:
+                        drawableResource = R.drawable.dice_1;
+                        break;
+                    case 2:
+                        drawableResource = R.drawable.dice_2;
+                        break;
+                    case 3:
+                        drawableResource = R.drawable.dice_3;
+                        break;
+                    case 4:
+                        drawableResource = R.drawable.dice_4;
+                        break;
+                    case 5:
+                        drawableResource = R.drawable.dice_5;
+                        break;
+                    default:
+                        drawableResource = R.drawable.dice_6;
+                        break;
+                }
+                ImageView diceImage =  findViewById(R.id.dice_image);
+                diceImage.setImageResource(drawableResource);
+
                 // Set the result in the TextView
-                resultText.setText(String.valueOf(randomInt));
+//                resultText.setText(String.valueOf(randomInt));
             }
         });
     }
